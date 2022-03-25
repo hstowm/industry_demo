@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Michsky.UI.ModernUIPack;
 
 public class AnnotationManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public List<LandmarkAnnotation> list_annotation;
+    public List<AnnotationObjects> list_annotation_objects;
     public GameObject canvas;
 
     public Vector3 pivot_point;
@@ -28,6 +30,7 @@ public class AnnotationManager : MonoBehaviour
     Vector3 m_pos_delta;
     Vector3 m_prev_pos;
     bool dragging;
+    public HorizontalSelector h_selector;
 
     void Start()
     {
@@ -44,6 +47,7 @@ public class AnnotationManager : MonoBehaviour
         {
             GenerateAnnotation(l);
         }
+
 
         pivot_point = demo.transform.position;
         original_position = demo.transform.position;
@@ -69,6 +73,11 @@ public class AnnotationManager : MonoBehaviour
         camera_start_rotation = Camera.main.transform.rotation;
 
         current_annotations = current;
+
+        var index = list_annotation.IndexOf(data);
+
+        h_selector.index = index + 1;
+        h_selector.UpdateUI();
         
     }
 
@@ -93,6 +102,18 @@ public class AnnotationManager : MonoBehaviour
         annotationObjects.data = landmark;
         annotationObjects.manager = this;
         annotationObjects.anchor_point = demo;
+        list_annotation_objects.Add(annotationObjects);
+        
+    }
+
+
+    public void SelectAnnotations(int index)
+    {
+        var landmark_selected = list_annotation[index];
+        var landmark_objects = list_annotation_objects[index];
+
+        Active(landmark_selected, landmark_objects);
+        landmark_objects.DisplayInformation();
     }
 
     
@@ -144,7 +165,7 @@ public class AnnotationManager : MonoBehaviour
     public void Zoom()
     {
         ZoomAmount += Input.GetAxis("Mouse ScrollWheel");
-        Debug.Log("Middle mouse movement " + Input.GetAxis("Mouse ScrollWheel"));
+      
         ZoomAmount = Mathf.Clamp(ZoomAmount, -MaxToClamp, MaxToClamp);
         var translate = Mathf.Min(Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")), MaxToClamp - Mathf.Abs(ZoomAmount));
         Camera.main.transform.Translate(0, 0, translate * ZOOMSpeed * Mathf.Sign(Input.GetAxis("Mouse ScrollWheel")));

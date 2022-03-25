@@ -13,6 +13,11 @@ public class AnnotationObjects : MonoBehaviour
     public void Onclick()
     {
         manager.Active(data,this);
+        DisplayInformation();
+    }
+
+    public void DisplayInformation()
+    {
         information_panel.gameObject.SetActive(true);
         information_panel.Display(data);
     }

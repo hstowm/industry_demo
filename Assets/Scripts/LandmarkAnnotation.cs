@@ -13,5 +13,6 @@ public class LandmarkAnnotation : ScriptableObject
     public string Description;
     public string NextScene;
     public GameObject prefab;
+    public AnnotationObjects scripts;
     
 }

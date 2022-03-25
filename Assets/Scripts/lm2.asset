@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: lm2
   m_EditorClassIdentifier: 
   pivotPoint: {x: -26, y: -0.31, z: -20}
-  cameraPosition: {x: -38.82098, y: 32.17604, z: -49.898613}
-  CameraRotation: {x: -0.34875757, y: -0.27591586, z: 0.108228035, w: -0.8891149}
+  cameraPosition: {x: -3.9913902, y: 29.760292, z: 3.1064568}
+  CameraRotation: {x: -0.13356806, y: 0.86525065, z: -0.36511835, w: -0.31652707}
   Title: Mayor House
   Description: The biggest house in the town
   NextScene: 
   prefab: {fileID: 6467996604724274876, guid: d51611b030b85f74da3ff973b440f590, type: 3}
+  scripts: {fileID: 0}

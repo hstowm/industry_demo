@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: lm1
   m_EditorClassIdentifier: 
   pivotPoint: {x: -69.8, y: -0.31, z: -25.06}
-  cameraPosition: {x: -84.908424, y: 33.668938, z: -38.373447}
-  CameraRotation: {x: -0.39848202, y: -0.19647573, z: 0.08781321, w: -0.8915706}
+  cameraPosition: {x: -16.389442, y: 42.049904, z: -19.118692}
+  CameraRotation: {x: -0.2755338, y: 0.6573748, z: -0.28205726, w: -0.6421708}
   Title: Gas Stop
   Description: The only gas stop in town
   NextScene: 
   prefab: {fileID: 6467996604724274876, guid: d51611b030b85f74da3ff973b440f590, type: 3}
+  scripts: {fileID: 0}
